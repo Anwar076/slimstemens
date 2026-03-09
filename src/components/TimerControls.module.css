@@ -1,0 +1,106 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  align-items: center;
+}
+
+.mainRow {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+.secondaryRow {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+.primaryButton,
+.secondaryButton,
+.powerButton,
+.resetButton {
+  border: none;
+  border-radius: 999px;
+  padding: 0.9rem 1.5rem;
+  min-width: 5.2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease,
+    filter 120ms ease;
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+.mainCircle {
+  width: 4.2rem;
+  height: 4.2rem;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 0.95rem;
+  text-align: center;
+  background: radial-gradient(circle at 30% 0, #fff8e1 0%, #ffca28 40%, #ff8f00 100%);
+  color: #311500;
+}
+
+.primaryButton {
+  background: radial-gradient(circle at 30% 0, #fff8e1 0%, #ffca28 40%, #ff8f00 100%);
+  color: #311500;
+}
+
+.secondaryButton {
+  background: radial-gradient(circle at 30% 0, #fff8e1 0%, #ffca28 40%, #ff8f00 100%);
+  color: #311500;
+}
+
+.resetButton {
+  background: linear-gradient(145deg, #ffebee 0%, #ef9a9a 40%, #c62828 100%);
+  color: #260000;
+}
+
+.powerButton {
+  background: radial-gradient(circle at 30% 0, #ffffff 0%, #b0bec5 30%, #455a64 100%);
+  color: #000a12;
+}
+
+.primaryButton:active,
+.secondaryButton:active,
+.resetButton:active,
+.powerButton:active {
+  transform: translateY(2px) scale(0.98);
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.7);
+  filter: brightness(0.96);
+}
+
+.smallLabel {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+  .primaryButton,
+  .secondaryButton,
+  .resetButton,
+  .powerButton {
+    padding: 0.85rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .mainRow,
+  .secondaryRow {
+    gap: 0.7rem;
+  }
+}
+
