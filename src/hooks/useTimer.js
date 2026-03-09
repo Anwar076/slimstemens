@@ -3,35 +3,15 @@ import { useEffect, useRef, useState } from 'react'
 const DEFAULT_SECONDS = 60
 const STEP = 20
 
-function createAlarmBeep() {
+function playAlarmSound() {
   try {
-    const AudioContext = window.AudioContext || window.webkitAudioContext
-    if (!AudioContext) return null
-    const ctx = new AudioContext()
-    const duration = 0.6
-    const oscillator = ctx.createOscillator()
-    const gain = ctx.createGain()
-
-    oscillator.type = 'square'
-    oscillator.frequency.value = 880
-
-    gain.gain.setValueAtTime(0.001, ctx.currentTime)
-    gain.gain.exponentialRampToValueAtTime(0.4, ctx.currentTime + 0.05)
-    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration)
-
-    oscillator.connect(gain)
-    gain.connect(ctx.destination)
-
-    oscillator.start()
-    oscillator.stop(ctx.currentTime + duration)
-
-    oscillator.onended = () => {
-      ctx.close()
-    }
+    const audio = new Audio('/sounds/alarm.mp3')
+    audio.play().catch(() => {
+      // Ignore play errors (e.g. not allowed without user gesture)
+    })
   } catch {
-    // Ignore audio errors (e.g. unsupported browser)
+    // Ignore audio errors
   }
-  return null
 }
 
 function useWakeLock(isActive) {
@@ -121,7 +101,7 @@ export function useTimer() {
     setIsAlarm(true)
 
     if (soundEnabled) {
-      createAlarmBeep()
+      playAlarmSound()
     }
   }, [seconds, isRunning, isOn, soundEnabled])
 
