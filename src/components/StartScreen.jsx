@@ -4,21 +4,24 @@ import sliderLogo from '../assets/Slider_IG_logo.png'
 
 function StartScreen({ onStart }) {
   return (
-    <div className={styles.root}>
-      <div className={styles.logoWrapper}>
-        <img src={logo} alt="De Slimste Mens" className={styles.logo} />
-      </div>
+    <main className={styles.root}>
+      <header className={styles.logoWrapper}>
+        <img src={logo} alt="De Slimste Mens logo" className={styles.logo} />
+      </header>
 
-      <button type="button" className={styles.startButton} onClick={onStart}>
-        Start Game
+      <button
+        type="button"
+        className={styles.startButton}
+        onClick={onStart}
+        aria-label="Start het spel en open de timer"
+      >
+        Start het spel
       </button>
 
-      <div className={styles.helperText}>Tip: gebruik in landscape-modus voor het beste resultaat.</div>
-
-      <div className={styles.footerLogo}>
-        <img src={sliderLogo} alt="Identity Games logo" />
-      </div>
-    </div>
+      <footer className={styles.footerLogo} aria-label="Identity Games">
+        <img src={sliderLogo} alt="Identity Games" />
+      </footer>
+    </main>
   )
 }
 

@@ -25,22 +25,19 @@ function TimerDisplay({ seconds, status, soundEnabled, isOn, onToggleSound, chil
               className={clsx(styles.statusDot, (isRunning || isAlarm) && styles.statusDotActive)}
               style={{ color: isAlarm ? '#ff1744' : '#4caf50' }}
             />
-            <span className={styles.statusLabel}>{isAlarm ? 'Alarm' : isRunning ? 'Running' : 'Ready'}</span>
+            <span className={styles.statusLabel}>
+              {isAlarm ? 'Alarm' : isRunning ? 'Bezig' : 'Gereed'}
+            </span>
           </div>
 
-          <div className={styles.stateText}>
-            {status === 'off' && 'Power Off'}
-            {status === 'running' && 'Counting Down'}
-            {status === 'paused' && 'Paused'}
-            {status === 'alarm' && 'Time Up'}
-          </div>
+          <div className={styles.stateText}>Power: {status === 'off' ? 'uit' : 'aan'}</div>
 
           <button
             type="button"
             className={clsx(styles.soundToggle, soundEnabled && styles.soundToggleActive)}
             onClick={onToggleSound}
           >
-            {soundEnabled ? 'Sound On' : 'Sound Off'}
+            Geluid: {soundEnabled ? 'aan' : 'uit'}
           </button>
         </div>
       </div>

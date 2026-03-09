@@ -21,10 +21,10 @@ function TimerPage({ onBackToStart }) {
     <div className={styles.root}>
       <div className={styles.inner}>
         <div className={styles.topBar}>
-          <div className={styles.gameTitle}>De Slimste Mens · Timer</div>
           <button type="button" className={styles.backButton} onClick={onBackToStart}>
-            Menu
+            ← Menu
           </button>
+          <div className={styles.gameTitle}>De Slimste Mens · Timer</div>
         </div>
 
         <TimerDisplay
