@@ -1,15 +1,3 @@
-@keyframes backgroundGlow {
-  0% {
-    filter: brightness(1);
-  }
-  50% {
-    filter: brightness(1.08);
-  }
-  100% {
-    filter: brightness(1);
-  }
-}
-
 .appRoot {
   min-height: 100vh;
   width: 100%;
@@ -21,6 +9,5 @@
     url('./assets/BG_Back.png') center/cover no-repeat;
   color: #ffffff;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  animation: backgroundGlow 6s ease-in-out infinite;
 }
 

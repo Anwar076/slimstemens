@@ -19,8 +19,7 @@
 }
 
 .shellOff {
-  opacity: 0.5;
-  filter: grayscale(0.3);
+  filter: grayscale(0.15);
 }
 
 .screen {
