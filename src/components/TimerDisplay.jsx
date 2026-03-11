@@ -5,16 +5,16 @@ function formatSeconds(seconds) {
   return String(seconds).padStart(2, '0')
 }
 
-function TimerDisplay({ seconds, status, soundEnabled, isOn, onToggleSound, children }) {
+function TimerDisplay({ seconds, status, soundEnabled, onToggleSound, children }) {
   const isRunning = status === 'running'
   const isPaused = status === 'paused'
   const isAlarm = status === 'alarm'
 
   return (
     <div className={styles.root}>
-      <div className={clsx(styles.shell, !isOn && styles.shellOff)}>
+      <div className={clsx(styles.shell)}>
         <div className={clsx(styles.screen, isAlarm && styles.screenAlarm)}>
-          <div className={clsx(styles.digits, !isOn && styles.digitsOff)}>{formatSeconds(seconds)}</div>
+          <div className={clsx(styles.digits)}>{formatSeconds(seconds)}</div>
         </div>
 
         <div className={styles.buttonSlot}>{children}</div>
@@ -25,12 +25,7 @@ function TimerDisplay({ seconds, status, soundEnabled, isOn, onToggleSound, chil
               className={clsx(styles.statusDot, (isRunning || isAlarm) && styles.statusDotActive)}
               style={{ color: isAlarm ? '#ff1744' : '#4caf50' }}
             />
-            <span className={styles.statusLabel}>
-              {isAlarm ? 'Alarm' : isRunning ? 'Bezig' : 'Gereed'}
-            </span>
           </div>
-
-          <div className={styles.stateText}>Power: {status === 'off' ? 'uit' : 'aan'}</div>
 
           <button
             type="button"
@@ -41,12 +36,6 @@ function TimerDisplay({ seconds, status, soundEnabled, isOn, onToggleSound, chil
           </button>
         </div>
       </div>
-
-      {isPaused && (
-        <div style={{ fontSize: '0.8rem', opacity: 0.85 }}>
-          Timer gepauzeerd – tik op START/STOP om verder te gaan.
-        </div>
-      )}
     </div>
   )
 }

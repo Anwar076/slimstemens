@@ -18,10 +18,6 @@
   min-height: min(300px, 70vw);
 }
 
-.shellOff {
-  filter: grayscale(0.15);
-}
-
 .screen {
   background: radial-gradient(circle at top, #f5f5f5 0%, #d7d7d7 40%, #9e9e9e 100%);
   border-radius: 0.9rem;
@@ -87,16 +83,7 @@
     0 0 18px currentColor;
 }
 
-.statusLabel {
-  opacity: 0.9;
-}
-
-.stateText {
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 600;
-  opacity: 0.9;
-}
+/* .statusLabel and .stateText removed – UI simplified */
 
 .soundToggle {
   border-radius: 999px;

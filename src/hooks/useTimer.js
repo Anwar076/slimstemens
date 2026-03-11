@@ -59,16 +59,15 @@ export function useTimer() {
   const [seconds, setSeconds] = useState(DEFAULT_SECONDS)
   const [isRunning, setIsRunning] = useState(false)
   const [isAlarm, setIsAlarm] = useState(false)
-  const [isOn, setIsOn] = useState(false)
   const [soundEnabled, setSoundEnabled] = useState(true)
 
   const intervalRef = useRef(null)
 
   // Keep screen awake while actively counting down
-  useWakeLock(isRunning && isOn && !isAlarm)
+  useWakeLock(isRunning && !isAlarm)
 
   useEffect(() => {
-    if (!isRunning || !isOn || isAlarm) {
+    if (!isRunning || isAlarm) {
       if (intervalRef.current) {
         clearInterval(intervalRef.current)
         intervalRef.current = null
@@ -91,11 +90,11 @@ export function useTimer() {
         intervalRef.current = null
       }
     }
-  }, [isRunning, isOn, isAlarm])
+  }, [isRunning, isAlarm])
 
   // Trigger alarm when we hit 0 from a running state
   useEffect(() => {
-    if (!isRunning || seconds > 0 || !isOn) return
+    if (!isRunning || seconds > 0) return
 
     setIsRunning(false)
     setIsAlarm(true)
@@ -103,11 +102,9 @@ export function useTimer() {
     if (soundEnabled) {
       playAlarmSound()
     }
-  }, [seconds, isRunning, isOn, soundEnabled])
+  }, [seconds, isRunning, soundEnabled])
 
   const startStop = () => {
-    if (!isOn) return
-
     if (isAlarm) {
       // Clear alarm and reset to default
       setIsAlarm(false)
@@ -120,7 +117,6 @@ export function useTimer() {
   }
 
   const adjustSeconds = (delta) => {
-    if (!isOn) return
     setSeconds((prev) => {
       const next = prev + delta
       if (next < 0) return 0
@@ -140,40 +136,24 @@ export function useTimer() {
     setIsAlarm(false)
   }
 
-  const togglePower = () => {
-    setIsOn((prev) => {
-      const next = !prev
-      if (!next) {
-        setIsRunning(false)
-        setIsAlarm(false)
-      } else {
-        setSeconds(DEFAULT_SECONDS)
-      }
-      return next
-    })
-  }
-
   const toggleSound = () => {
     setSoundEnabled((prev) => !prev)
   }
 
   let status = 'paused'
-  if (!isOn) status = 'off'
-  else if (isAlarm) status = 'alarm'
+  if (isAlarm) status = 'alarm'
   else if (isRunning) status = 'running'
 
   return {
     seconds,
     isRunning,
     isAlarm,
-    isOn,
     soundEnabled,
     status,
     startStop,
     add20,
     minus20,
     reset,
-    togglePower,
     toggleSound,
   }
 }

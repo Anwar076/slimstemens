@@ -19,7 +19,6 @@
 
 .primaryButton,
 .secondaryButton,
-.powerButton,
 .resetButton {
   border: none;
   border-radius: 999px;
@@ -31,10 +30,6 @@
   text-transform: uppercase;
   cursor: pointer;
   touch-action: manipulation;
-  transition:
-    transform 120ms ease,
-    box-shadow 120ms ease,
-    filter 120ms ease;
   box-shadow:
     0 6px 16px rgba(0, 0, 0, 0.6),
     0 0 0 1px rgba(0, 0, 0, 0.4);
@@ -69,31 +64,19 @@
   color: #260000;
 }
 
-.powerButton {
-  background: radial-gradient(circle at 30% 0, #ffffff 0%, #b0bec5 30%, #455a64 100%);
-  color: #000a12;
-}
-
 .primaryButton:active,
 .secondaryButton:active,
-.resetButton:active,
-.powerButton:active {
-  transform: translateY(2px) scale(0.98);
+.resetButton:active {
+  transform: none;
   box-shadow:
     0 4px 10px rgba(0, 0, 0, 0.7);
   filter: brightness(0.96);
 }
 
-.smallLabel {
-  font-size: 0.75rem;
-  opacity: 0.8;
-}
-
 @media (max-width: 600px) {
   .primaryButton,
   .secondaryButton,
-  .resetButton,
-  .powerButton {
+  .resetButton {
     padding: 0.85rem 1.2rem;
     font-size: 0.9rem;
   }

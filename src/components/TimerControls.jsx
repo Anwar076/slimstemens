@@ -1,41 +1,6 @@
-import { useCallback, useRef } from 'react'
 import styles from './TimerControls.module.css'
 
-const LONG_PRESS_MS = 2000
-
-function TimerControls({ onStartStop, onAdd20, onMinus20, onReset, onPowerToggle }) {
-  const powerPressTimeout = useRef(null)
-
-  const schedulePowerLongPress = useCallback(() => {
-    if (powerPressTimeout.current) {
-      clearTimeout(powerPressTimeout.current)
-    }
-    powerPressTimeout.current = setTimeout(() => {
-      onPowerToggle()
-      powerPressTimeout.current = null
-    }, LONG_PRESS_MS)
-  }, [onPowerToggle])
-
-  const clearPowerLongPress = useCallback(() => {
-    if (powerPressTimeout.current) {
-      clearTimeout(powerPressTimeout.current)
-      powerPressTimeout.current = null
-    }
-  }, [])
-
-  const handlePowerDown = () => {
-    schedulePowerLongPress()
-  }
-
-  const handlePowerUp = () => {
-    // Short press: do nothing (no power toggle)
-    clearPowerLongPress()
-  }
-
-  const handlePowerLeave = () => {
-    clearPowerLongPress()
-  }
-
+function TimerControls({ onStartStop, onAdd20, onMinus20, onReset }) {
   const confirmReset = () => {
     // eslint-disable-next-line no-alert
     const ok = window.confirm('Reset timer to 60 seconds?')
@@ -81,18 +46,6 @@ function TimerControls({ onStartStop, onAdd20, onMinus20, onReset, onPowerToggle
           onClick={confirmReset}
         >
           Reset
-        </button>
-
-        <button
-          type="button"
-          className={styles.powerButton}
-          onPointerDown={handlePowerDown}
-          onPointerUp={handlePowerUp}
-          onPointerLeave={handlePowerLeave}
-          onPointerCancel={handlePowerLeave}
-        >
-          Power
-          <div className={styles.smallLabel}>Hold 2s</div>
         </button>
       </div>
     </div>
