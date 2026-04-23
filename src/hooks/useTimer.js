@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 
 const DEFAULT_SECONDS = 60
 const STEP = 20
+const MAX_SECONDS = 999
 
 function playAlarmSound() {
   try {
@@ -120,6 +121,7 @@ export function useTimer() {
     setSeconds((prev) => {
       const next = prev + delta
       if (next < 0) return 0
+      if (next > MAX_SECONDS) return MAX_SECONDS
       return next
     })
     if (isAlarm && delta > 0) {

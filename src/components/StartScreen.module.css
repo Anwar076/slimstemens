@@ -10,9 +10,9 @@
 }
 
 .logoWrapper {
-  max-width: 420px;
-  width: 80%;
-  margin-bottom: 3rem;
+  max-width: 680px;
+  width: min(92vw, 680px);
+  margin-bottom: 2.2rem;
 }
 
 .logo {
@@ -92,7 +92,7 @@
   }
 
   .logoWrapper {
-    max-width: 520px;
+    max-width: 760px;
   }
 }
 

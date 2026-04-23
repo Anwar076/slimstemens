@@ -1,5 +1,5 @@
 import styles from './StartScreen.module.css'
-import logo from '../assets/Vector Logo - De Slimste Mens.png'
+import logo from '../assets/Vector Logo - De Slimste Mens-DonXmyHx_White.png'
 import sliderLogo from '../assets/Slider_IG_logo.png'
 
 function StartScreen({ onStart }) {
