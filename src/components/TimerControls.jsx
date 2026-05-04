@@ -15,9 +15,9 @@ function TimerControls({ onStartStop, onAdd20, onMinus20, onReset }) {
         <button
           type="button"
           className={`${styles.secondaryButton} ${styles.mainCircle}`}
-          onClick={onMinus20}
+          onClick={onAdd20}
         >
-          -20
+          +20
         </button>
 
         <button
@@ -33,9 +33,9 @@ function TimerControls({ onStartStop, onAdd20, onMinus20, onReset }) {
         <button
           type="button"
           className={`${styles.secondaryButton} ${styles.mainCircle}`}
-          onClick={onAdd20}
+          onClick={onMinus20}
         >
-          +20
+          -20
         </button>
       </div>
 
