@@ -1,7 +1,7 @@
 .root {
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 2.5rem;
   align-items: center;
 }
 
@@ -74,6 +74,10 @@
 }
 
 @media (max-width: 600px) {
+  .root {
+    gap: 2rem;
+  }
+
   .primaryButton,
   .secondaryButton,
   .resetButton {
